@@ -20,7 +20,7 @@ def all_students():
                 "year_of_admission": std[5]
             })
 
-        return json_students
+        return jsonify(json_students)
 
     elif request.method == "POST":
         num_credit = request.json["num_credit"]

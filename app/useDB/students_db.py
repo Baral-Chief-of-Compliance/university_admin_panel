@@ -7,12 +7,8 @@ def all_students():
 
 
 def create_student(*args):
-   quarry.call("insert into student "
-               "values "
-               "(%s, %s, %s, %s, %s, %s)", *args,
-               commit=True,
-               fetchall=False
-               )
+   quarry.call("insert into student values "
+               "(%s, %s, %s, %s, %s, %s)", *args, commit=True, fetchall=False)
 
 
 def inf_about_student(num_credit):
