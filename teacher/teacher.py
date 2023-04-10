@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from app.useDB import teachers_db
+from app.useDB import workload_db
 
 
 teacher = Blueprint('teachers', __name__)
@@ -38,12 +39,25 @@ def all_teacher():
 @teacher.route("/<int:num_t>", methods=["GET", "DELETE"])
 def inf_about_teacher(num_t):
     if request.method == "GET":
+        json_workload = []
         inf = teachers_db.inf_about_teacher(num_t)
+        workload = workload_db.workload_for_teacher(num_t)
+
+        for w in workload:
+            json_workload.append({
+                "course": w[0],
+                "semester": w[1],
+                "type_of_classes": w[2],
+                "hours": w[3],
+                "name_control": w[4],
+                "name_dis": w[5]
+            })
 
         return jsonify({
             "num_t": inf[0],
             "surname_t": inf[1],
             "name_t": inf[2],
             "patri_t": inf[3],
-            "post": inf[4]
+            "post": inf[4],
+            "workload": json_workload
         })
