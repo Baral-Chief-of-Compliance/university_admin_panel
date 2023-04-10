@@ -23,6 +23,11 @@ const routes = [
         path: 'add_student',
         name: 'add_student',
         component: () => import('@/components/students/AddStudent.vue')
+      },
+      {
+        path: 'students/:num_credit',
+        name: 'student',
+        component: () => import('@/components/students/Student.vue')
       }
     ],
   },
