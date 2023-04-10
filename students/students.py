@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from app.useDB import students_db
+from app.useDB import delivery_of_work_db
 
 students = Blueprint('students', __name__)
 
@@ -40,7 +41,18 @@ def all_students():
 @students.route("/<int:num_credit>", methods=["GET", "DELETE"])
 def inf_about_student(num_credit):
     if request.method == "GET":
+        json_delivery = []
         inf = students_db.inf_about_student(num_credit)
+        delivery = delivery_of_work_db.delivery_for_student(num_credit)
+
+        for d in delivery:
+            json_delivery.append({
+                "score": d[0],
+                "date_work": d[1],
+                "name_w": d[2],
+                "name_control": d[3],
+                "name_dis": d[4]
+            })
 
         return jsonify({
             "num_credit": inf[0],
@@ -48,5 +60,6 @@ def inf_about_student(num_credit):
             "name_s": inf[2],
             "patro_s": inf[3],
             "num_group": inf[4],
-            "year_of_admission": inf[5]
+            "year_of_admission": inf[5],
+            "delivery": json_delivery
         })
