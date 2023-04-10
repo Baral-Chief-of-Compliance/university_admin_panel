@@ -27,6 +27,15 @@
                     </v-card>
                 </v-hover>
             </div>
+            <div class="my-2 pt-6 mx-14 d-flex flex-row">
+                <v-btn  block
+                    color="indigo"
+                    v-bind="props"
+                    >
+                    Добавить студента
+                    </v-btn>
+            </div>
+
         </v-col>
      </div>
 </template>
