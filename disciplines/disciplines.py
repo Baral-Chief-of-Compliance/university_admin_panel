@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from app.useDB import disciplines_db
+from app.useDB import form_of_work_db
 
 
 disciplines = Blueprint('disciplines', __name__)
@@ -30,9 +31,19 @@ def all_disciplines():
 @disciplines.route("/<int:num_dis>", methods=["GET", "DELETE"])
 def inf_about_discipline(num_dis):
     if request.method == "GET":
+        json_forms_of_work = []
         inf = disciplines_db.inf_about_discipline(num_dis)
+        inf_about_work = form_of_work_db.forms_for_discipline(num_dis)
+
+        for i in inf_about_work:
+            json_forms_of_work.append({
+                "num_work": i[0],
+                "num_dis": i[1],
+                "name_control": i[2]
+            })
 
         return jsonify({
             "num_dis": inf[0],
-            "name_dis": inf[1]
+            "name_dis": inf[1],
+            "forms_of_work": json_forms_of_work
         })

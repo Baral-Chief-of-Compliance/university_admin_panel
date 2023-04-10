@@ -13,3 +13,5 @@ def all_forms():
 
         form_of_work_db.create_form([num_dis, name_control])
 
+        return jsonify(f"{name_control} for {num_dis} is add")
+
