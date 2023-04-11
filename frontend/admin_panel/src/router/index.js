@@ -48,6 +48,11 @@ const routes = [
         path: 'add_workload/:num_t',
         name: 'add_workload',
         component: () => import('@/components/workload/AddWorkload.vue')
+      },
+      {
+        path: 'delivery/:num_credit',
+        name: 'delivery',
+        component: () => import('@/components/delivery/AddDelivery.vue')
       }
     ],
   },

@@ -1,9 +1,9 @@
 <template>
-    <div class="text-h3 py-6 mx-10 text-left">Добавить нагрузку для {{ name_t }} {{ patri_t }} {{ surname_t }}</div>
+    <div class="text-h3 py-6 mx-10 text-left">Добавить сдачу для {{ name_s }} {{ patro_s }} {{ surname_s }}</div>
 
     <v-row class="d-flex justify-center my-5">
         <v-card v-show="add_workload" class="pa-6" color="green-accent-1">
-            Нагрузка добавлена
+            Сдача добавлена
         </v-card>
     </v-row>
 
@@ -32,14 +32,13 @@
             <v-row class="ma-10" v-else-if="stage === 2">
                 <v-col>
                     <v-row>
-                        <v-text-field v-model="course" type="number" label="Курс" color="indigo"></v-text-field>
-                        <v-text-field v-model="hours" type="number" label="Часы" color="indigo"></v-text-field>
-                        <v-text-field v-model="semester" type="number" label="Семестр" color="indigo"></v-text-field>
-                        <v-text-field v-model="type_of_classes" type="text" label="Вид занятий" color="indigo"></v-text-field>
+                        <v-text-field v-model="name_w" type="text" label="Тема" color="indigo"></v-text-field>
+                        <v-text-field v-model="date_work" type="date" label="Дата здачи" color="indigo"></v-text-field>
+                        <v-text-field v-model="score" type="number" label="Оценка" color="indigo"></v-text-field>
                     </v-row>
                     <v-row class="mt-10">
-                        <v-btn block color="indigo" @click="create_workload()">
-                            Добавить нагрузку
+                        <v-btn block color="indigo" @click="create_delivery()">
+                            Добавить сдачу
                         </v-btn>
                     </v-row>
                 </v-col>
@@ -68,9 +67,9 @@ import axios from 'axios';
 
 export default{
     data: () => ({
-        name_t: "",
-        patri_t: "",
-        surname_t: "",
+        name_s: "",
+        patro_s: "",
+        surname_s: "",
         add_workload: false,
         disciplines: [],
         forms_of_work: [],
@@ -79,21 +78,20 @@ export default{
 
         num_dis: "",
         num_work: "",
-        num_t: "",
-        course: "",
-        hours: "",
-        semester: "",
-        type_of_classes: ""
+        num_credit: "",
+        name_w: "",
+        date_work: "",
+        score: "",
     }),
 
     methods: {
-        get_teacher(){
-            axios.get(`http://127.0.0.1:5000/teachers/${this.$route.params.num_t}`)
+        get_student(){
+            axios.get(`http://127.0.0.1:5000/students/${this.$route.params.num_credit}`)
             .then(response => (
-                this.name_t = response.data.name_t,
-                this.patri_t = response.data.patri_t,
-                this.surname_t = response.data.surname_t,
-                this.num_t = response.data.num_t
+                this.name_s = response.data.name_s,
+                this.patro_s = response.data.patro_s,
+                this.surname_s = response.data.surname_s,
+                this.num_credit = response.data.num_credit
             ))
         },
 
@@ -115,22 +113,20 @@ export default{
             )
         },
 
-        create_workload(){
-            axios.post('http://127.0.0.1:5000/workload/all', {
-                num_t: this.num_t,
+        create_delivery(){
+            axios.post('http://127.0.0.1:5000/delivery_of_work/all', {
+                num_credit: this.num_credit,
                 num_work: this.num_work,
-                course: this.course,
-                semester: this.semester,
-                type_of_classes: this.type_of_classes,
-                hours: this.hours
+                score: this.score,
+                date_work: this.date_work,
+                name_w: this.name_w
             })
 
             this.add_workload = true,
             this.stage = 0,
-            this.course = "",
-            this.hours = "",
-            this.semester = "",
-            this.type_of_classes = "",
+            this.score = "",
+            this.date_work = "",
+            this.name_w = "",
             this.num_dis = "",
             this.num_work = ""
         },
@@ -150,7 +146,7 @@ export default{
         },
     },
     mounted(){
-        this.get_teacher()
+        this.get_student()
         this.get_disciplines()
     }
 }

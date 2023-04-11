@@ -15,6 +15,18 @@
     <v-container class="d-flex justify-center">
 
     </v-container>
+    <div>
+        <v-row class="mx-14">
+            <v-btn  block
+                color="indigo"
+                v-bind="props"
+                :to="{ name: 'delivery', params: {num_credit:  this.$route.params.num_credit }}"
+            >
+                Добавить сдачу
+            </v-btn>
+        </v-row>
+    </div>
+
 </template>
 
 <script>

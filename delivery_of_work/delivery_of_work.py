@@ -4,7 +4,7 @@ from app.useDB import delivery_of_work_db
 delivery_of_work = Blueprint('delivery_of_work', __name__)
 
 
-@delivery_of_work.route('/', methods=["POST"])
+@delivery_of_work.route('/all', methods=["POST"])
 def all_delivery():
     if request.method == "POST":
         num_credit = request.json["num_credit"]
