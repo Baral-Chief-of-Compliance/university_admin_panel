@@ -17,3 +17,8 @@ def inf_about_student(num_credit):
                       commit=False, fetchall=False)
 
     return inf
+
+
+def delete_student(num_credit):
+    quarry.call("DELETE FROM student where num_credit = %s",
+                [num_credit], commit=True, fetchall=False)

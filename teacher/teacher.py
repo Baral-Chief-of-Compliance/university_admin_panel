@@ -6,7 +6,7 @@ from app.useDB import workload_db
 teacher = Blueprint('teachers', __name__)
 
 
-@teacher.route("/", methods=["GET", "POST"])
+@teacher.route("/all", methods=["GET", "POST"])
 def all_teacher():
     if request.method == "GET":
         json_teachers = []

@@ -63,3 +63,9 @@ def inf_about_student(num_credit):
             "year_of_admission": inf[5],
             "delivery": json_delivery
         })
+
+    elif request.method == "DELETE":
+        students_db.delete_student()
+
+        return jsonify(f"delete student {num_credit}")
+

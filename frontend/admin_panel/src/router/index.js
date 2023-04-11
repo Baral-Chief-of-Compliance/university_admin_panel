@@ -20,14 +20,19 @@ const routes = [
         component: () => import('@/components/students/Students.vue')
       },
       {
-        path: 'add_student',
-        name: 'add_student',
-        component: () => import('@/components/students/AddStudent.vue')
-      },
-      {
         path: 'students/:num_credit',
         name: 'student',
         component: () => import('@/components/students/Student.vue')
+      },
+      {
+        path: 'teachers',
+        name: 'teachers',
+        component: () => import('@/components/teachers/Teachers.vue')
+      },
+      {
+        path: 'teachers/:num_t',
+        name: 'teacher',
+        component: () => import('@/components/teachers/Teacher.vue')
       }
     ],
   },

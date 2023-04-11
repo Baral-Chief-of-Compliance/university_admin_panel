@@ -18,17 +18,17 @@
     ></v-list-item>
   </v-list-group>
 
-  <v-list-group value="Clients">
+  <v-list-group value="Teachers">
     <template v-slot:activator="{ props }">
       <v-list-item
         v-bind="props"
         prepend-icon="mdi-account-details"
-        title="Клиенты"
+        title="Преподаватели"
       ></v-list-item>
     </template>
 
     <v-list-item
-      v-for="([title, icon, to], i) in clients"
+      v-for="([title, icon, to], i) in teachers"
       :key="i"
       :title="title"
       :prepend-icon="icon"
@@ -85,14 +85,11 @@
 <script>
   export default {
     data: () => ({
-    students: [
+        students: [
         ['Список', 'mdi-account-multiple', '/students'],
-        ['Добавить', 'mdi-account-multiple', '/add_student']
       ],
-      clients:[
-        ['Добавить', 'mdi-account-plus', '/add_client'],
-        ['Найти', 'mdi-account-search'],
-        ['Список', 'mdi-account-multiple', '/clients']
+      teachers:[
+        ['Список', 'mdi-account-multiple', '/teachers'],
       ],
       stocks:[
         ['Список', 'mdi-garage', '/stocks'],
