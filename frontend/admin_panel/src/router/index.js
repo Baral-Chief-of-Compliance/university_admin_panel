@@ -43,6 +43,11 @@ const routes = [
         path: 'discipline/:num_dis',
         name: 'discipline',
         component: () => import('@/components/disciplines/Discipline.vue')
+      },
+      {
+        path: 'add_workload/:num_t',
+        name: 'add_workload',
+        component: () => import('@/components/workload/AddWorkload.vue')
       }
     ],
   },

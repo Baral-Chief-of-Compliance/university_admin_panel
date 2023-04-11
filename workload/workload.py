@@ -4,7 +4,7 @@ from app.useDB import workload_db
 workload = Blueprint('workload', __name__)
 
 
-@workload.route('/', methods=["POST"])
+@workload.route('/all', methods=["POST"])
 def all_workload():
     if request.method == "POST":
         num_t = request.json["num_t"]
