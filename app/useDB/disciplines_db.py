@@ -17,3 +17,9 @@ def inf_about_discipline(num_dis):
                       commit=False, fetchall=False)
 
     return inf
+
+
+def delete_discipline(num_dis):
+    quarry.call("delete from discipline where num_dis = %s",
+                [num_dis],
+                commit=True, fetchall=False)

@@ -6,7 +6,7 @@ from app.useDB import form_of_work_db
 disciplines = Blueprint('disciplines', __name__)
 
 
-@disciplines.route('/', methods=["GET", "POST"])
+@disciplines.route('/all', methods=["GET", "POST"])
 def all_disciplines():
     if request.method == "GET":
         json_disciplines = []
@@ -47,3 +47,8 @@ def inf_about_discipline(num_dis):
             "name_dis": inf[1],
             "forms_of_work": json_forms_of_work
         })
+
+    elif request.method == "DELETE":
+        disciplines_db.delete_discipline(num_dis)
+
+        return jsonify(f"discipline {num_dis} is delete")

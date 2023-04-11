@@ -39,28 +39,7 @@
     
   </v-list-group>
 
-  <v-list-group value="Stocks">
-    <template v-slot:activator="{ props }">
-      <v-list-item
-        v-bind="props"
-        prepend-icon="mdi-garage"
-        title="Склады"
-      ></v-list-item>
-    </template>
-
-    <v-list-item
-      v-for="([title, icon, to], i) in stocks"
-      :key="i"
-      :title="title"
-      :prepend-icon="icon"
-      :value="title"
-      :to="to"
-    ></v-list-item>
-
-    
-  </v-list-group>
-
-  <v-list-group value="Orders">
+  <v-list-group value="Disciplines">
     <template v-slot:activator="{ props }">
       <v-list-item
         v-bind="props"
@@ -70,7 +49,7 @@
     </template>
 
     <v-list-item
-      v-for="([title, icon, to], i) in orders"
+      v-for="([title, icon, to], i) in disciplines"
       :key="i"
       :title="title"
       :prepend-icon="icon"
@@ -91,14 +70,8 @@
       teachers:[
         ['Список', 'mdi-account-multiple', '/teachers'],
       ],
-      stocks:[
-        ['Список', 'mdi-garage', '/stocks'],
-        ['Карта', 'mdi-map', '/map_stocks']
-      ],
-      orders: [
-        ['Добавить', 'mdi-plus-outline', '/add_application'],
-        ['Активные', 'mdi-file-outline', '/all_active_application'],
-        ['Закрытые', 'mdi-update', '/all_close_application']
+      disciplines: [
+        ['Список', 'mdi-file-outline', '/disciplines']
       ],
     }),
   }

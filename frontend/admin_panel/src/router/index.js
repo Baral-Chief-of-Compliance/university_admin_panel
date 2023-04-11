@@ -33,6 +33,16 @@ const routes = [
         path: 'teachers/:num_t',
         name: 'teacher',
         component: () => import('@/components/teachers/Teacher.vue')
+      },
+      {
+        path: 'disciplines',
+        name: 'disciplines',
+        component: () => import('@/components/disciplines/Disciplines.vue')
+      },
+      {
+        path: 'discipline/:num_dis',
+        name: 'discipline',
+        component: () => import('@/components/disciplines/Discipline.vue')
       }
     ],
   },
