@@ -5,7 +5,7 @@ from app.useDB import delivery_of_work_db
 students = Blueprint('students', __name__)
 
 
-@students.route('/', methods=["GET", "POST"])
+@students.route('/all', methods=["GET", "POST"])
 def all_students():
     if request.method == "GET":
         json_students = []
