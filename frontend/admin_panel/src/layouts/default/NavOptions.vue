@@ -44,7 +44,7 @@
       <v-list-item
         v-bind="props"
         prepend-icon="mdi-application"
-        title="Заказы"
+        title="Дисциплины"
       ></v-list-item>
     </template>
 

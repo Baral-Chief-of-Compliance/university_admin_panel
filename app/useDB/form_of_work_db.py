@@ -11,3 +11,9 @@ def forms_for_discipline(num_dis):
                         [num_dis], commit=False, fetchall=True)
 
     return forms
+
+
+def delete_forms_of_work(num_work):
+    quarry.call("DELETE FROM form_of_work where num_work = %s",
+                [num_work], commit=True, fetchall=False)
+
