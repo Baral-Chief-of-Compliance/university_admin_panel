@@ -32,6 +32,12 @@
                                     {{ s.num_credit  }}
 
                                 </v-card>
+
+                                <v-card-actions class="mt-3">
+                                    <v-spacer></v-spacer>
+                                    <v-btn @click="delete_student(s.num_credit)" variant="outlined" color="red"
+                                    >Удалить</v-btn>
+                                </v-card-actions>
                             </v-hover>
                         </div>
                         <div class="my-2 pt-6 mx-14 d-flex flex-row">
@@ -156,6 +162,11 @@ export default{
             this.num_credit = ""
 
             this.dialog = false
+        },
+        delete_student(num_credit){
+            axios.delete(`http://127.0.0.1:5000/students/${num_credit}`).then(
+                (students) => this.get_studnets()
+            )
         }
     }
 }
